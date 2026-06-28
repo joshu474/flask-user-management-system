@@ -1,0 +1,76 @@
+body {
+    background-color:#f2f2f2;
+    font-family: arial,sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+
+}
+
+form {
+    background: white;
+    padding: 30px,
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    width: 300px;
+
+input {
+     width: 100%;
+     padding: 10px;
+     margin: 10px 0;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+}
+
+button {
+     width: 500px;
+     padding: 10px;
+     background: #007bff;
+     color: white;
+     border-radius: 5px;
+     cursor: pointer;
+}
+button:hover {
+     background: #0056b3;
+
+.message {
+    color: red;
+    margin-bottom: 10px,
+
+.dashboard-card {
+    backgound: white;
+    padding: 30px;
+    boarder-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    width: 400px;
+    text-align: center;
+}
+
+.menu {
+    margin-top: 20px;
+}
+
+.dashboard-card p {
+    margin: 10px 0;
+}
+
+
+.button {
+    display: block;
+    text-decoration: none;
+    padding: 10px;
+    margin: 10px 0;
+    backgound: #007bff;
+    color: white
+    boarder: 5p;
+}
+
+.button:hover {
+    opacity: 0.9;
+}
+
+.logout-button {
+    background: #0000;
+}

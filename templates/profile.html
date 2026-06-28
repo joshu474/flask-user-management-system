@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="dashboard-card">
+    <h1>User Profile</h1>
+    <p><strong>Username:</strong> {{ username }}</p>
+    <p><strong>Status:</strong>Logged In</p>
+    <a href=
+"{{ url_for('edit_profile') }}"
+       class="button">
+       Edit profile
+    </a>  
+    <a href="{{ url_for('dashboard') }}"
+       class="button">
+       Back to dashbord
+    </a>
+    <a href="{{ url_for('logout') }}"
+       class="button logout-button">
+       Logout
+    </a
+    <p><strong>Member Since:</strong>Learning Flask</p>
+    
+</div>
+
+</body>
+</html>

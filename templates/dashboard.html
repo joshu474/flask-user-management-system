@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Dashboard</h1>
+    <h2>Welcome, {{ session['username'] }} </h2>
+<br>
+    <h3>Menu</h3>
+    <ul>
+        <li><a href="/users">View Users</a></li>
+        <li><a href="/edit_profile">Edit Profile</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+<br>    
+       
+<h3>Account Summary</h3>
+
+<p>Username: {{ session["username"] }}</p>
+<p>Status: Logged In</p>
+
+<p>Total Users: {{ total_users }}</p>
+
+<a href="{{ url_for('change_password') }}"> 
+     Change Password
+</a>
+</body>
+</html>

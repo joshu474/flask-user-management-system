@@ -1,0 +1,17 @@
+python
+db = sqlite3.connect("users.db")
+cursor = db.cursor()
+cursor.execute(
+    "SELECT * FROM users WHERE username=? AND password=?",
+    (username, password)
+)
+user = cursor.fetchone()
+db.close
+if user:
+    session["user"] = username
+    return render_template(
+        "dashboard.html",
+        username=username
+    )
+else:
+    return "Login failed"
