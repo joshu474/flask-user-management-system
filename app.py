@@ -1,3 +1,4 @@
+#Git practice
 from functools import wraps
 from flask import Flask, render_template, request, session, flash, redirect, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -32,7 +33,7 @@ def login():
         cursor.execute(
             "SELECT * FROM users WHERE LOWER(username)=?",
             (username, )
-        )
+        )#Learning one Git with ChatGPt
 
         username = cursor.fetchone()
         print("USERNAME =", username)
