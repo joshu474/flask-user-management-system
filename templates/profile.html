@@ -1,31 +1,98 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Profile</title>
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-<div class="dashboard-card">
-    <h1>User Profile</h1>
-    <p><strong>Username:</strong> {{ username }}</p>
-    <p><strong>Status:</strong>Logged In</p>
-    <a href=
-"{{ url_for('edit_profile') }}"
-       class="button">
-       Edit profile
-    </a>  
-    <a href="{{ url_for('dashboard') }}"
-       class="button">
-       Back to dashbord
-    </a>
-    <a href="{{ url_for('logout') }}"
-       class="button logout-button">
-       Logout
-    </a
-    <p><strong>Member Since:</strong>Learning Flask</p>
-    
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+            <h3>User Profile</h3>
+        </div>
+
+        <div class="card-body">
+
+            <form method="POST" enctype="multipart/form-data">
+
+                <div class="text-center mb-4">
+
+                    {% if profile_picture %}
+                        <img src="{{ url_for('static', filename='profile_pictures/' + profile_picture) }}"
+                             class="rounded-circle border"
+                             width="180"
+                             height="180">
+                    {% else %}
+                        <img src="{{ url_for('static', filename='profile_pictures/default.jpg') }}"
+                             class="rounded-circle border"
+                             width="180"
+                             height="180">
+                    {% endif %}
+
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><strong>Username</strong></label>
+                    <input type="text"
+                           class="form-control"
+                           value="{{ username }}"
+                           readonly>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><strong>Email</strong></label>
+                    <input type="email"
+                           class="form-control"
+                           name="email"
+                           value="{{ email or '' }}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><strong>Role</strong></label>
+                    <input type="text"
+                           class="form-control"
+                           value="{{ role }}"
+                           readonly>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><strong>Member Since</strong></label>
+                    <input type="text"
+                           class="form-control"
+                           value="{{ created_at }}"
+                           readonly>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><strong>Profile Picture</strong></label>
+                    <input type="file"
+                           name="profile_picture"
+                           class="form-control"
+                           accept=".jpg,.jpeg,.png,.gif">
+                </div>
+
+                <button type="submit"
+                        class="btn btn-success">
+                    Update Profile
+                </button>
+
+                <a href="{{ url_for('dashboard') }}"
+                   class="btn btn-secondary">
+                    Back to Dashboard
+                </a>
+
+                <a href="{{ url_for('logout') }}"
+                   class="btn btn-danger">
+                    Logout
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
 </div>
 
-</body>
-</html>
+{% endblock %}

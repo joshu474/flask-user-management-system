@@ -1,29 +1,89 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Dashboard</title>
-</head>
-<body>
-    <h1>Dashboard</h1>
-    <h2>Welcome, {{ session['username'] }} </h2>
-<br>
-    <h3>Menu</h3>
-    <ul>
-        <li><a href="/users">View Users</a></li>
-        <li><a href="/edit_profile">Edit Profile</a></li>
-        <li><a href="/logout">Logout</a></li>
-    </ul>
-<br>    
-       
-<h3>Account Summary</h3>
+{% extends "base.html" %}
 
-<p>Username: {{ session["username"] }}</p>
-<p>Status: Logged In</p>
+{% block title %}Dashboard{% endblock %}
 
-<p>Total Users: {{ total_users }}</p>
+{% block content %}
 
-<a href="{{ url_for('change_password') }}"> 
-     Change Password
-</a>
-</body>
-</html>
+<h2 class="mb-4">
+    Welcome, {{ session["username"] }}
+</h2>
+
+<p class="text-muted">
+    Role: <strong>{{ session["role"]|title }}</strong>
+</p>
+
+<div class="row mb-4">
+
+    <div class="col-md-4 mb-3">
+        <div class="card text-center shadow">
+            <div class="card-body">
+                <h5 class="card-title">👥 Total Users</h5>
+                <h2>{{ total_users }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card text-center shadow">
+            <div class="card-body">
+                <h5 class="card-title">👑 Administrators</h5>
+                <h2>{{ total_admins }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card text-center shadow">
+            <div class="card-body">
+                <h5 class="card-title">👤 Regular Users</h5>
+                <h2>{{ total_regular_users }}</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="card shadow">
+
+    <div class="card-header bg-primary text-white">
+        <h4>Quick Actions</h4>
+    </div>
+
+    <div class="card-body">
+
+        <div class="d-grid gap-2 d-md-flex">
+
+            <a href="{{ url_for('profile') }}"
+               class="btn btn-warning">
+                Edit Profile
+            </a>
+
+            <a href="{{ url_for('change_password') }}"
+               class="btn btn-info">
+                Change Password
+            </a>
+
+            <a href="{{ url_for('users') }}"
+               class="btn btn-success">
+                View Users
+            </a>
+
+            {%  if session.get("role") == "admin" %}
+            <a href="{{ url_for('add_user') }}"
+              class="btn btn-primary">
+                 Add User
+            </a>
+            {% endif %}
+
+            <a href="{{ url_for('logout') }}"
+               class="btn btn-danger">
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

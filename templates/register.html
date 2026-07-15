@@ -1,32 +1,60 @@
-HTML
+{% extends "base.html" %}
 
-<!DOCTYPE html>
-<html>
+{% block title %}Register{% endblock %}
 
-<head>
-    <title>Register</title>
-</head>
+{% block content %}
 
-<body>
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
 
-     <h1>Create Account</h1>
+        <div class="card shadow">
 
-     <form action="/register" method="POST">
+            <div class="card-header text-center">
+                <h3>Create Account</h3>
+            </div>
 
-        <label>Username:</label>
-        <input type="txt" name="username">
+            <div class="card-body">
 
-        <br><br>
+                <form action="/register" method="POST">
 
-        <label>Password:</label>
-        <input type="password" name="password">
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        <input type="text"
+                               name="username"
+                               class="form-control"
+                               required>
+                    </div>
 
-        <br><br>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email"
+                               name="email"
+                               class="form-control"
+                               placeholder="Enter your email"
+        required>
+</div>
 
-        <button type="submit">Register</button>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password"
+                               name="password"
+                               class="form-control"
+                               autocomplete="password"
+                               required>
+                    </div>
 
-    </form>
+                    <button type="submit"
+                            class="btn btn-success w-100">
+                        Create Account
+                    </button>
 
-</body>
+                </form>
 
-</html>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,24 +1,57 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login</title>
-</head>
-<body>
-    <h1>Login Page</h1>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-                <p style="color:red;">{{ message }}</p>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
-    <form method="POST">
-        <label>Username:</label>
-        <input type="text" name="username" required>
-        <br><br>
-        <label>Password:</label>
-        <input type="password" name="password" required>
-        <br><br>
-        <button type="submit">Login</button>
-    </form>
-</body>
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+
+    {% block content %}
+    <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+
+        <div class="card shadow">
+
+            <div class="card-header text-center">
+                <h3>Login</h3>
+            </div>
+
+            <div class="card-body">
+
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-danger">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                <form method="POST">
+
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        <input type="text"
+                               name="username"
+                               class="form-control"
+                               required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password"
+                               name="password"
+                               class="form-control"
+                               required>
+                    </div>
+
+                    <button type="submit"
+                            class="btn btn-primary w-100">
+                        Login
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+    {% endblock %}

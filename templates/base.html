@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Flask User Management{% endblock %}</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+
+        <a class="navbar-brand" href="{{ url_for('home') }}">
+            Flask User Management
+        </a>
+
+        <div class="navbar-nav ms-auto">
+
+            <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+
+{% if session.get("username") %}
+    <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a>
+    <a class="nav-link" href="{{ url_for('profile') }}">Edit Profile</a>
+    <a class="nav-link" href="{{ url_for('change_password') }}">Change Password</a>
+    <a class="nav-link" href="{{ url_for('users') }}">View Users</a>
+    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+{% else %}
+    <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+{% endif %}
+
+<a class="nav-link" href="{{ url_for('register') }}">Register</a>
+
+        </div>
+
+    </div>
+</nav>
+
+<div class="container mt-4">
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button"
+            class="btn-close"
+            data-bs-dismiss="alert">
+    </button>
+</div>
+
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}
+    {% endblock %}
+
+</div>
+<footer class="bg-dark text-white text-center mt-5 py-3">
+    <p class="mb-0">
+        Flask User Management System &copy; 2026
+    </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

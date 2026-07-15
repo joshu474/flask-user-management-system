@@ -1,7 +1,9 @@
 
-<!DOCTYPE html>
-<html>
-<head>
+{% extends "base.html" %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
     <title>Login Page</title>
     <link rel="stylesheet"
     href="{{ url_for('static', filename='style.css') }}">
@@ -34,3 +36,4 @@
 
 </body>
 </html>
+{% endblock %}
