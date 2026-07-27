@@ -41,7 +41,17 @@
                                class="form-control"
                                autocomplete="password"
                                required>
+
                     </div>
+            {% if session.get("role") == "admin" %}
+            <div class="mb-3">
+               <label for="role" class="form-label">Role</label>
+               <select class="form-select" id="role" name="role">
+                   <option value="user" selected>User</option>
+                   <option value="admin">Administrator</option>
+            </select>
+            </div>
+           {% endif %}        
 
                     <button type="submit"
                             class="btn btn-success w-100">

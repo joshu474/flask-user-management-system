@@ -10,7 +10,6 @@
 
     <div class="mb-3">
         <label class="form-label">Username</label>
-
         <input
             type="text"
             name="username"
@@ -20,33 +19,43 @@
     </div>
 
     <div class="mb-3">
-
-        <label class="form-label">Role</label>
-
-        <select
-            name="role"
-            class="form-select">
-
-            <option value="user"
-            {% if user[1] == "user" %}selected{% endif %}>
-                User
-            </option>
-
-            <option value="admin"
-            {% if user[1] == "admin" %}selected{% endif %}>
-                Admin
-            </option>
-
-        </select>
-
+        <label class="form-label">Email</label>
+        <input
+            type="email"
+            name="email"
+            class="form-control"
+            value="{{ user[1] }}">
     </div>
 
-    <button class="btn btn-success">
+    <div class="mb-3">
+        <label class="form-label">Role</label>
+        <select name="role" class="form-select">
+            <option value="user" {% if user[2] == "user" %}selected{% endif %}>
+                User
+            </option>
+            <option value="admin" {% if user[2] == "admin" %}selected{% endif %}>
+                Admin
+            </option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Account Status</label>
+        <select name="active" class="form-select">
+            <option value="1" {% if user[3] == 1 %}selected{% endif %}>
+                Active
+            </option>
+            <option value="0" {% if user[3] == 0 %}selected{% endif %}>
+                Deactivated
+            </option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">
         Save Changes
     </button>
 
-    <a href="{{ url_for('users') }}"
-       class="btn btn-secondary">
+    <a href="{{ url_for('users') }}" class="btn btn-secondary">
         Cancel
     </a>
 
